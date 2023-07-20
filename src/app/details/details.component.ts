@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Product} from '../card/card.interface';
+import { Product_List } from './details.constants';
+import { ProductService } from '../card/card.service';
 
 @Component({
   selector: 'app-details',
@@ -6,14 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  names=[
-    {name: 'name 1', emp_id: 'emp_id 1.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 2', emp_id: 'emp_id 2.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 3', emp_id: 'emp_id 3.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 4', emp_id: 'emp_id 4.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 5', emp_id: 'emp_id 5.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 6', emp_id: 'emp_id 6.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 7', emp_id: 'emp_id 7.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 8', emp_id: 'emp_id 8.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },
-    {name: 'name 9', emp_id: 'emp_id 9.', type:'business', admin:'admin',email:'xyz@gmail.com',pno:'9999999999',status:'pending' },]
+  description='Paperkraft Expressions Gift Set (1 Metal Ball Pen with Gold trims + 1 Stainless steel Key Chain) | Elegant twist mechanism with 0.7mm Tip'
+  products:Product[]= Product_List
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.getProduct().subscribe(products => {
+      this.products = products;
+    });
+  }
 }
+
+
+//use http client to call api and load products
+//use loaders
+//minimise from cart along with add
+// cumulative cart count
+
+
+
