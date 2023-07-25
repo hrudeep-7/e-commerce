@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+  input_text: string ='';
+  onsubmit(inputEl:HTMLInputElement){
+    this.input_text=inputEl.value
+  }
 }

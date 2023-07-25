@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter  } from '@angular/core';
 import {Product} from './card.interface'
-import { ProductService } from './card.service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -8,17 +7,19 @@ import { ProductService } from './card.service';
 })
 export class CardComponent {
   @Input() product?:Product;
- 
-  constructor(private productservice: ProductService) {}
+  @Output() cartUpdated = new EventEmitter<number>();
+  constructor() {}
 
   cartCount = 0;
 
   addToCart() {
     this.cartCount++;
+    this.cartUpdated.emit(1);
   }
   removeFromCart() {
     if (this.cartCount > 0) {
       this.cartCount--;
+      this.cartUpdated.emit(-1);
     }
   }
   

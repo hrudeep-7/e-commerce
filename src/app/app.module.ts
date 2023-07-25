@@ -9,11 +9,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     DetailsComponent,
+   
   ],
   imports: [ BrowserModule,
     BrowserAnimationsModule,
