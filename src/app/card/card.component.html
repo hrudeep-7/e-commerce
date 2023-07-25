@@ -11,9 +11,9 @@
       </div>
       <p class="text-gray-700 text-base">status: {{ product?.status }}</p>
       <div class="flex">
-        <button class="bg-red-500 text-white px-4 py-2 ml-2" (click)="removeFromCart()">-</button>
-        <p>{{ cartCount }}</p>
-        <button class="bg-blue-500 text-white px-4 py-2" (click)="addToCart()">+</button>
+        <button class="bg-red-500 text-white px-4 py-2 ml-2" (click)="removeFromCart(product?.id)">-</button>
+        <p>{{ product?.count }}</p>
+        <button class="bg-blue-500 text-white px-4 py-2" (click)="addToCart(product?.id)">+</button>
       </div>
     </div>
     </div>

@@ -7,20 +7,15 @@ import {Product} from './card.interface'
 })
 export class CardComponent {
   @Input() product?:Product;
-  @Output() cartUpdated = new EventEmitter<number>();
+  @Output() cartUpdated = new EventEmitter<{id?:number,value:1|-1}>();
   constructor() {}
+ 
 
-  cartCount = 0;
-
-  addToCart() {
-    this.cartCount++;
-    this.cartUpdated.emit(1);
+  addToCart(id?:number) {
+    this.cartUpdated.emit({id,value:1});
   }
-  removeFromCart() {
-    if (this.cartCount > 0) {
-      this.cartCount--;
-      this.cartUpdated.emit(-1);
-    }
+  removeFromCart(id?:number) {
+    this.cartUpdated.emit({id,value:-1});
   }
   
 }

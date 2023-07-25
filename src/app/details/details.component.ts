@@ -12,16 +12,24 @@ export class DetailsComponent {
   products:Product[]= Product_List
   totalCartValue = 0;
 
-  updateCartValue(change: number) {
-    this.totalCartValue += change;
+  updateCartValue(change: {id?:number,value:1|-1}) {
+    
+    
+    const product=this.products.find(x=>x.id===change?.id)
+
+    if(product){
+      if(product.count>=0){
+      product.count+=change?.value;
+      this.totalCartValue += change?.value;
+      }
+    }
+
   }
 }
 
-
+//add non negative logic
 //use http client to call api and load products
 //use loaders
-//minimise from cart along with add
-// cumulative cart count
 
 
 
