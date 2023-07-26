@@ -18,10 +18,12 @@ export class DetailsComponent {
     const product=this.products.find(x=>x.id===change?.id)
 
     if(product){
-      if(product.count>=0){
-      product.count+=change?.value;
+      
+      if(!(change?.value===-1 && product?.count===0)) {
+        product.count+=change?.value;
       this.totalCartValue += change?.value;
       }
+
     }
 
   }
